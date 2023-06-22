@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Header from "./components/Header";
 import "./App.css";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check for token in localStorage
+    setIsAuthenticated(!!localStorage.getItem("token"));
+  }, []);
   return (
     <BrowserRouter>
       <Header
