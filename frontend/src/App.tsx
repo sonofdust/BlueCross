@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
+//import {createContext} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Header from "./components/Header";
-import "./App.css";
+import Crud from "./Crud";
+// export const pageContext = React.createContext();
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -11,20 +13,18 @@ function App() {
     setIsAuthenticated(!!localStorage.getItem("token"));
   }, []);
   return (
+    // <pageContext.Provider>
     <BrowserRouter>
       <Header
         onLogin={function (username: string, password: string): void {
           throw new Error("Function not implemented.");
         }}
-      ></Header>
+      />
+      <Routes>
+        {isAuthenticated ? <Route path="/" element={<Crud />} /> : undefined}
+      </Routes>
     </BrowserRouter>
-    // <div className="App">
-    //   <header className="App-header">
-    //     <p>
-    //       Edit <code>src/App.tsx</code> and save to reload.
-    //     </p>
-    //   </header>
-    // </div>
+    // </pageContext.Provider>
   );
 }
 

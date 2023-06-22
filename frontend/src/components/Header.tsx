@@ -13,7 +13,7 @@ interface HeaderProps {
   onLogin: (email: string, password: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({onLogin}) => {
+const Header: React.FC<HeaderProps> = ({}) => {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,12 +64,6 @@ const Header: React.FC<HeaderProps> = ({onLogin}) => {
         console.log(error);
         localStorage.setItem("token", "");
       });
-
-    // localStorage.setItem(
-    //   "token",
-    //   response.data.token ? response.data.token : ""
-    // );
-    //    onLogin(email, password);
     setShowModal(false);
   };
 
