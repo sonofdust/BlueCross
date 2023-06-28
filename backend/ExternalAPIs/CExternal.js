@@ -37,7 +37,7 @@ class CExternal {
         res.json(data);
       })
       .catch((error) => {
-        res.err(error);
+        console.log(error);
       });
   }
 }

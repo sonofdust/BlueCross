@@ -25,9 +25,9 @@ class CSecurity {
       return res.status(401).json({error: "Authorization token missing"});
     }
 
-    jwt.verify(token, SECRET_KEY, (err, decoded) => {
+    jwt.verify(token, SECRET_KEY, async (err, decoded) => {
       if (err) {
-        return res.status(401).json({error: "Invalid token"});
+        return await res.status(401).json({error: "Invalid token"});
       }
     });
   }

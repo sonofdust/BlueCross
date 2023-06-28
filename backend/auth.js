@@ -1,5 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+
+//const jwt = require("jsonwebtoken");
+
 const bodyParser = require("body-parser");
 const CSecurity = require("./ExternalAPIs/CSecurity");
 const CExternal = require("./ExternalAPIs/CExternal");
@@ -33,9 +36,9 @@ app.post("/login", (req, res) => {
   security.LogIn(req, res);
 });
 
-app.get("/users", async (req, res) => {
+app.get("/users", (req, res) => {
   // Verify JWT token
-  await security.Validate(req, res);
+  //  security.Validate(req, res);
   //****************************************************************************************** */
   external.getUsers(res);
   //****************************************************************************************** */
